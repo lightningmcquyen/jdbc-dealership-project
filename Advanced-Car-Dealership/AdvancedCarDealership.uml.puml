@@ -1,0 +1,138 @@
+@startuml
+class com.pluralsight.dealership.Dealership {
+- ArrayList<Vehicle> inventory
+- DealershipFileManager fileManager
+- String name
+- String address
+- String phone
++ String getName()
++ void setName(String)
++ String getAddress()
++ void setAddress(String)
++ String getPhone()
++ void setPhone(String)
++ ArrayList<Vehicle> getVehiclesByPrice(double,double)
++ ArrayList<Vehicle> getVehiclesByMakeModel(String,String)
++ ArrayList<Vehicle> getVehiclesByYear(int,int)
++ ArrayList<Vehicle> getVehiclesByColor(String)
++ ArrayList<Vehicle> getVehiclesByMileage(double,double)
++ ArrayList<Vehicle> getVehiclesByType(String)
++ ArrayList<Vehicle> getAllVehicles()
++ void addVehicle(Vehicle)
++ boolean removeVehicle(int)
++ String toString()
+}
+
+
+abstract class com.pluralsight.dealership.Contract {
+- String dateOfContract
+- String customerName
+- String customerEmail
+- Vehicle vehicleSold
+# double totalPrice
+# double monthlyPayment
++ String getDateOfContract()
++ void setDateOfContract(String)
++ String getCustomerName()
++ void setCustomerName(String)
++ String getCustomerEmail()
++ void setCustomerEmail(String)
++ Vehicle getVehicleSold()
++ void setVehicleSold(Vehicle)
++ {abstract}double getTotalPrice()
++ {abstract}double getMonthlyPayment()
+}
+
+
+class com.pluralsight.dealership.SalesContract {
+- double originalPrice
+- boolean financed
++ boolean isFinanced()
++ double getTotalPrice()
++ double getMonthlyPayment()
+}
+
+
+class com.pluralsight.dealership.UserInterface {
+- Dealership dealership
+- boolean isRunning
+- Scanner scanley
+- void displayVehicles(ArrayList<Vehicle>)
+- void init()
++ void quit()
++ void displayMenu()
++ void display()
++ void processGetByPriceRequest()
++ void processGetByMakeModelRequest()
++ void processGetByYearRequest()
++ void processGetByColorRequest()
++ void processGetByMileageRequest()
++ void processGetByVehicleTypeRequest()
++ void processGetAllVehiclesRequest()
++ void processAddVehicleRequest()
++ void processRemoveVehicleRequest()
++ void processSaleVehicleRequest()
++ void processLeaseVehicleRequest()
+}
+
+
+class com.pluralsight.dealership.DealershipFileManager {
+- {static} String FILE_PATH
++ Dealership getDealership()
++ void saveDealership(Dealership)
+}
+
+
+class com.pluralsight.dealership.Vehicle {
+- int vin
+- int year
+- String make
+- String model
+- String vehicleType
+- String color
+- int odometer
+- double price
++ int getVin()
++ void setVin(int)
++ int getYear()
++ void setYear(int)
++ String getMake()
++ void setMake(String)
++ String getModel()
++ void setModel(String)
++ String getVehicleType()
++ void setVehicleType(String)
++ String getColor()
++ void setColor(String)
++ int getOdometer()
++ void setOdometer(int)
++ double getPrice()
++ void setPrice(double)
++ String toString()
+}
+
+
+class com.pluralsight.dealership.AdvancedCarDealership {
++ {static} void main(String[])
+}
+
+class com.pluralsight.dealership.LeaseContract {
+- double originalPrice
+- boolean financed
++ double getTotalPrice()
++ boolean isFinanced()
++ double getMonthlyPayment()
+}
+
+
+class com.pluralsight.dealership.ContractFileManager {
+- {static} String CONTRACTS_FILE_PATH
++ void saveContract(Contract)
+}
+
+
+
+
+com.pluralsight.dealership.Contract <|-- com.pluralsight.dealership.SalesContract
+com.pluralsight.dealership.Contract <|-- com.pluralsight.dealership.LeaseContract
+@enduml
