@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Dealership {
     // Instance variables
     private final ArrayList<Vehicle> inventory; //holds all vehicles
-    private final DealershipFileManager fileManager; // Add a file manager reference
     private String name;
     private String address;
     private String phone;
@@ -17,7 +16,6 @@ public class Dealership {
         this.phone = phone;
 
         this.inventory = new ArrayList<>(); //initialize the ArrayList
-        this.fileManager = new DealershipFileManager(); // Initialize the file manager
     }
 
     // Getters and Setters
@@ -122,7 +120,6 @@ public class Dealership {
 
     public void addVehicle(Vehicle vehicle){
         inventory.add(vehicle);
-        fileManager.saveDealership(this); // Save after adding
     }
 
     public boolean removeVehicle(int vin) {
@@ -132,9 +129,6 @@ public class Dealership {
             // Check if the VIN matches
             if (vehicle.getVin() == vin) {
                 inventory.remove(i); // Remove the vehicle from the inventory
-                // Save the updated inventory to the CSV file
-                DealershipFileManager fileManager = new DealershipFileManager();
-                fileManager.saveDealership(this); // Save changes after removal
                 return true; // Vehicle found and removed
             }
         }

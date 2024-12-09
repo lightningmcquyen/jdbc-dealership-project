@@ -1,8 +1,8 @@
 package com.pluralsight.dealership;
 
 public class LeaseContract extends Contract {
-    final private double originalPrice;
-    final private boolean financed;
+    private final double originalPrice; // Price of the vehicle
+    private final boolean financed; // Whether the lease is financed
 
     // Constructor
     public LeaseContract(String dateOfContract, String customerName, String customerEmail, Vehicle vehicle, double originalPrice, boolean financed) {
@@ -22,6 +22,13 @@ public class LeaseContract extends Contract {
         return financed;
     }
 
+    public double getOriginalPrice() { // Getter for originalPrice
+        return originalPrice;
+    }
+
+    public int getVin() { // Add this method to retrieve VIN
+        return getVehicleSold().getVin(); // Access the VIN from the Vehicle object
+    }
 
     @Override
     public double getMonthlyPayment() {
