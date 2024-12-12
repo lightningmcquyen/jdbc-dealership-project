@@ -2,11 +2,10 @@ package com.pluralsight.dealership;
 
 import dao.VehicleDAO;
 import dao.VehicleDAOMysqlImpl;
-
 import org.apache.commons.dbcp2.BasicDataSource;
-
 import java.util.Scanner;
 import java.util.List;
+import java.sql.*;
 
 public class UserInterface {
     private final VehicleDAO vehicleDao;
